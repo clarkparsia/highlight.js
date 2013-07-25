@@ -487,6 +487,23 @@ func main() {
 ?&gt;
 </code></pre>
 
+<tr>
+    <th>Manchester OWL Syntax
+    <td class="manchester">
+<pre>
+<code>Class: Person
+  SubClassOf: hasAge exactly 1
+    and hasGender exactly 1
+    and hasGender only {female , male}
+Individual: John
+  Types: Person
+  Facts: hasWife Mary,
+    hasSon Bill,
+    hasDaughter Susan,
+    hasAge 33,
+    hasGender male
+    SameAs: Jack</code></pre>
+
 	<tr>
 		<th>Markdown
 		<td class="markdown">
