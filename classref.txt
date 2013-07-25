@@ -420,6 +420,16 @@ SQL ("sql"):
   comment          comment
   aggregate        aggregate function
 
+SPARQL ("sparql"):
+
+  variable         variable starting with "?" or "$"
+  uri              a URI absolute or using prefixes
+  keyword          keyword (mostly SPARQL 1.0 and SPARQL 1.1)
+  number           number
+  string           string (of any type: "..", '..')
+  comment          comment
+  aggregate        aggregate function
+
 Smalltalk ("smalltalk"):
 
   keyword          keyword
