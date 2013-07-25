@@ -1495,7 +1495,28 @@ SELECT * WHERE {
   ?s rdfs:label $name .
   FILTER ($age > 30) . 
   FILTER ($name = "John") 
-}</code></pre>
+}
+
+[] a rule:SPARQLRule ;
+   rule:content """
+        PREFIX : &lt;http://org.clarkparsia.dcfoodie/model#&gt;
+        IF {
+             ?x :cuisine "Japanese"
+        }
+        THEN {
+             ?x rdf:type :Japanese
+        }""" .
+
+[] a rule:SPARQLRule ;
+   rule:content """
+        PREFIX : &lt;http://org.clarkparsia.dcfoodie/model#&gt;
+        IF {
+                ?x rdf:type :Saucier .
+                ?x :worksAt ?y .
+        }
+        THEN {
+                ?y :hasSaucier ?x
+        }""" .</code></pre>
 
   <tr>
     <th>SmallTalk

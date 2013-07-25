@@ -32,7 +32,14 @@ function(hljs) {
     }
   ];
 
-  var STR_CONTAINS = [hljs.BACKSLASH_ESCAPE];
+  var RULE = {
+    className: 'rule',
+    beginWithKeyword: true, 
+    keywords: 'if then'
+  };
+
+  var STR_CONTAINS = [hljs.BACKSLASH_ESCAPE, RULE];
+
   var STRINGS = [
     {
       className: 'string',
@@ -48,6 +55,21 @@ function(hljs) {
     }
   ];
 
+  var STRINGS_MULTIPLE = [
+    {
+      className: 'string',
+      begin: "'''", end: "'''",
+      contains: STR_CONTAINS.concat(STRINGS),
+      relevance: 0
+    },
+    {
+      className: 'string',
+      begin: '"""', end: '"""',
+      contains: STR_CONTAINS.concat(STRINGS),
+      relevance: 0
+    }
+  ];
+
   var NUMBERS = [hljs.BINARY_NUMBER_MODE, hljs.C_NUMBER_MODE];
 
   var COMMENT = {
@@ -58,7 +80,7 @@ function(hljs) {
   var SPARQL_DEFAULT_CONTAINS = [
     COMMENT,
     VARIABLE
-  ].concat(STRINGS).concat(NUMBERS).concat(URIS);
+  ].concat(STRINGS_MULTIPLE).concat(STRINGS).concat(NUMBERS).concat(URIS);
 
   return {
     case_insensitive: true,
