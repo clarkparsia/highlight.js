@@ -1,5 +1,7 @@
 /*
-Language: SPARQL
+  Language: SPARQL
+  Author: Edgar Rodriguez-Diaz <edgar@clarkparsia.com>
+  Description: SPARQL Query Language
 */
 
 function(hljs) {

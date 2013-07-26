@@ -1,5 +1,7 @@
 /*
-Language: Manchester OWL 2 Syntax
+  Language: Manchester
+  Author: Edgar Rodriguez-Diaz <edgar@clarkparsia.com>
+  Description: Manchester OWL2 Syntax
 */
 
 function (hljs) {
