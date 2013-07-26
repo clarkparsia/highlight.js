@@ -1569,7 +1569,16 @@ SELECT * WHERE {
         }
         THEN {
                 ?y :hasSaucier ?x
-        }""" .</code></pre>
+        }""" .
+
+IF {
+      $x a Person; a :Male; :hasSibling $y;
+      $y :isParentOf $z;
+      $z a :Female.
+}
+THEN {
+      $x a UncleOfNiece.
+}</code></pre>
 
   <tr>
     <th>SmallTalk

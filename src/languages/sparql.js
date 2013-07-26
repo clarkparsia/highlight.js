@@ -31,6 +31,10 @@ function(hljs) {
     {
       className: 'uri',
       begin: SPARQL_IDEN_EMPTY_REGEX+ '?\\:'+ SPARQL_IDEN_REGEX
+    },
+    {
+      className: 'uri',
+      begin: '\\ba\\b'
     }
   ];
 
@@ -61,13 +65,13 @@ function(hljs) {
     {
       className: 'string',
       begin: "'''", end: "'''",
-      contains: STR_CONTAINS.concat(STRINGS),
+      contains: STR_CONTAINS,
       relevance: 0
     },
     {
       className: 'string',
       begin: '"""', end: '"""',
-      contains: STR_CONTAINS.concat(STRINGS),
+      contains: STR_CONTAINS,
       relevance: 0
     }
   ];
@@ -81,7 +85,8 @@ function(hljs) {
 
   var SPARQL_DEFAULT_CONTAINS = [
     COMMENT,
-    VARIABLE
+    VARIABLE,
+    RULE
   ].concat(STRINGS_MULTIPLE).concat(STRINGS).concat(NUMBERS).concat(URIS);
 
   return {
