@@ -301,6 +301,12 @@ HTTP ("http"):
   string           header value or query string in a request line
   number           status code
 
+HTTP ("http-stardog"):
+
+  keywords         http methods
+  variable         URL variables
+  title            MIME types
+
 Lua ("lua"):
 
   keyword          keyword
