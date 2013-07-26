@@ -165,6 +165,14 @@ SCSS ("scss")
   variable         variable starting with "$"
   preprocessor     keywords after @
 
+Manchester ("manchester"):
+
+  keyword           manchester owl 2 syntax keywords
+  built_in          any operator built-in modifier
+  constant          any set of constant options
+  string            any string literal
+  uri               a URI absolute or using prefixes             
+
 Markdown ("markdown"):
 
   header            header
