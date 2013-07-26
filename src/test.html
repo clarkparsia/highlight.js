@@ -1460,6 +1460,64 @@ select count(*) from cicero_forum;
 -- this line lacks ; at the end to allow people to be sloppy and omit it in one-liners
 COMMIT</code></pre>
 
+<tr>
+    <th>SPARQL
+    <td class="sparql">
+<pre><code>PREFIX : &lt;tag:2013-05-08:CMS-DEMO:egad.clarkparsia.com:&gt;
+
+SELECT * {
+  ?city rdfs:label ?cityName .
+  {
+     SELECT ?city (avg(?hospitalAvg / ?nationalAvg) AS ?cmp) (count(distinct ?hospital) AS ?numHospital) {
+        ?x a :Hospital-DRG ; 
+          :hasHospital ?hospital ;  # comment on hospital BGP
+          :hasDRG ?drg ; 
+          :hasAverageTotalPayments ?hospitalAvg .
+        ?hospital :hasAddress [:hasCity ?city] .
+        {
+          SELECT ?drg (avg(?tot) as ?nationalAvg) { 
+             ?x a :Hospital-DRG ; 
+                :hasDRG ?drg ; 
+                :hasAverageTotalPayments ?tot 
+          }   
+          GROUP BY ?drg
+        }
+     }
+     GROUP BY ?city
+  }
+}
+ORDER BY DESC(?cmp)
+LIMIT 10
+
+SELECT * WHERE { 
+  ?s a :Person . 
+  ?s foaf:age $age . 
+  ?s rdfs:label $name .
+  FILTER ($age > 30) . 
+  FILTER ($name = "John") 
+}
+
+[] a rule:SPARQLRule ;
+   rule:content """
+        PREFIX : &lt;http://org.clarkparsia.dcfoodie/model#&gt;
+        IF {
+             ?x :cuisine "Japanese"
+        }
+        THEN {
+             ?x rdf:type :Japanese
+        }""" .
+
+[] a rule:SPARQLRule ;
+   rule:content """
+        PREFIX : &lt;http://org.clarkparsia.dcfoodie/model#&gt;
+        IF {
+                ?x rdf:type :Saucier .
+                ?x :worksAt ?y .
+        }
+        THEN {
+                ?y :hasSaucier ?x
+        }""" .</code></pre>
+
   <tr>
     <th>SmallTalk
     <td class="smalltalk">
