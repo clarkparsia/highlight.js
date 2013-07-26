@@ -301,7 +301,7 @@ HTTP ("http"):
   string           header value or query string in a request line
   number           status code
 
-HTTP ("http-stardog"):
+HTTP ("httpstardog"):
 
   keywords         http methods
   variable         URL variables
